@@ -36,10 +36,17 @@
             top: 150px;
             background-color: var(--color-flap);
             box-shadow: 0 4px 20px rgba(0,0,0,.1);
-            /* Override cursor style to prevent interaction */
-            cursor: default;
-            pointer-events: none;
+            cursor: pointer; /* Re-enable the pointer */
+            pointer-events: auto; /* Re-enable interaction with this element */
+
+            /* Make sure the letter is behind the envelope initially */
+            z-index: 1;
+            transition: z-index 0.5s;
         }
+        #envelope.closed {
+            z-index: 5; /* When closed, it's on top */
+        }
+
         .front {
             position: absolute;
             width: 0;
@@ -52,8 +59,15 @@
             border-bottom: 82px solid transparent;
             border-top: 98px solid var(--color-flap);
             transform-origin: top;
-            /* Remove interaction */
-            pointer-events: none;
+             pointer-events: none; /* Disable interaction */
+            transition: transform 0.5s; /* Add a smooth transition */
+        }
+        .closed .flap {
+            transform: rotateX(0deg);  /* Flap is closed initially */
+        }
+
+        .open .flap {
+           transform: rotateX(180deg); /* When open, rotate flap to "open" */
         }
         .pocket {
             border-left: 140px solid var(--color-env);
@@ -64,6 +78,7 @@
             border-bottom-right-radius: 6px;
             border: 1px solid rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            z-index: 4; /* Ensure it is above the letter */
         }
         .letter {
             position: relative;
@@ -76,9 +91,15 @@
             box-shadow: 0 2px 26px rgba(0,0,0,.08);
             padding: 15px;
             box-sizing: border-box;
-            /* Always Show the Letter */
-            transform: translateY(-60px) rotate(-2deg);
             z-index: 2;
+
+           /* Initially hidden */
+            transform: translateY(calc(100% - 20px)) rotate(-2deg); /* Hide the letter */
+            transition: transform 0.5s;
+        }
+
+        .open .letter {
+            transform: translateY(-60px) rotate(-2deg); /* Show the letter */
         }
         .letter:after {
             content: '';
@@ -208,7 +229,7 @@
 </head>
 <body>
     <div class="envlope-wrapper">
-        <div id="envelope">
+        <div id="envelope" class="closed">  <!-- Initially closed -->
             <div class="wax-seal"></div>
             <div class="front flap"></div>
             <div class="front pocket"></div>
@@ -217,7 +238,7 @@
                 <div class="letter-corner corner-br"></div>
                 <div class="message">
                     <p>happy valentine's day, ely</p>
-                    <p>take care of urself always</p>
+                    <p>take care  always</p>
                 </div>
             </div>
             <div class="hearts">
@@ -233,22 +254,19 @@
         </div>
     </div>
     <div class="reset">
-        <button id="reset">Close Envelope</button>
+        <button id="reset">Toggle Envelope</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             const envelope = $('#envelope');
             const btnReset = $("#reset");
-            
-            // No toggle, always open
-            btnReset.on('click', close);
 
-            function close() {
-                // You can remove this function if no closing functionality is desired
-                // For now, just remove the translate to bring the letter back down
-                envelope.find('.letter').css('transform', 'translateY(0) rotate(0)');
-            }
+            btnReset.on('click', function() {
+                envelope.toggleClass('closed');
+                envelope.toggleClass('open');
+
+            });
         });
     </script>
 </body>
