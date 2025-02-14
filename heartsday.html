@@ -5,13 +5,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-env: #F62217;
-            --color-env2: #733635; 
+            --color-env: #F62217;          /* Main Envelope Color */
+            --color-env2: #FFA07A;          /* Adjusted Color for Envelope 2 (Light Coral) */
             --color-flap: #ff8da1;
             --color-bg: #7E354D;
             --color-heart: #ff85a2;
             --color-sparkle: #fff;
             --wax-red: #c04040;
+        }
+        body {
+            background-color: var(--color-bg);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .envlope-wrapper {
+            height: 380px;
+            margin-top: 50px;
+            animation: float 3s ease-in-out infinite;
         }
         #envelope {
             position: relative;
@@ -23,7 +36,9 @@
             top: 150px;
             background-color: var(--color-flap);
             box-shadow: 0 4px 20px rgba(0,0,0,.1);
-            cursor: pointer;
+            /* Override cursor style to prevent interaction */
+            cursor: default;
+            pointer-events: none;
         }
         .front {
             position: absolute;
@@ -37,6 +52,7 @@
             border-bottom: 82px solid transparent;
             border-top: 98px solid var(--color-flap);
             transform-origin: top;
+            /* Remove interaction */
             pointer-events: none;
         }
         .pocket {
@@ -46,8 +62,8 @@
             border-top: 90px solid transparent;
             border-bottom-left-radius: 6px;
             border-bottom-right-radius: 6px;
-            border: 1px solid rgba(0, 0, 0, 0.1); /* Added a subtle border */
-            box-sizing: border-box; /* Include border in element's total width and height */
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
         .letter {
             position: relative;
@@ -60,6 +76,9 @@
             box-shadow: 0 2px 26px rgba(0,0,0,.08);
             padding: 15px;
             box-sizing: border-box;
+            /* Always Show the Letter */
+            transform: translateY(-60px) rotate(-2deg);
+            z-index: 2;
         }
         .letter:after {
             content: '';
@@ -87,36 +106,6 @@
             font-size: 1.8em;
             text-shadow: 0 2px 3px rgba(0,0,0,0.1);
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .envlope-wrapper {
-            height: 380px;
-            margin-top: 50px;
-            animation: float 3s ease-in-out infinite;
-        }
-        .open .flap {
-            transform: rotateX(180deg);
-            transition: transform 0.4s ease, z-index 0.6s;
-            z-index: 1;
-        }
-        .close .flap {
-            transform: rotateX(0deg);
-            transition: transform 0.4s 0.6s ease, z-index 1s;
-            z-index: 5;
-        }
-        .close .letter {
-            transform: translateY(0px); 
-            transition: transform 0.4s ease, z-index 1s;
-            z-index: 1;
-        }
-        .open .letter {
-            transform: translateY(-60px) rotate(-2deg);
-            transition: transform 0.4s 0.6s ease, z-index 0.6s;
-            z-index: 2;
-        }
-        
         .letter-corner {
             position: absolute;
             width: 20px;
@@ -192,14 +181,6 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.5); }
         }
-        body {
-            background-color: var(--color-bg);
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
         .reset {
             text-align: center;
             margin-top: 50px;
@@ -227,7 +208,7 @@
 </head>
 <body>
     <div class="envlope-wrapper">
-        <div id="envelope" class="close">
+        <div id="envelope">
             <div class="wax-seal"></div>
             <div class="front flap"></div>
             <div class="front pocket"></div>
@@ -252,23 +233,21 @@
         </div>
     </div>
     <div class="reset">
-        <button id="open">Open Envelope</button>
         <button id="reset">Close Envelope</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             const envelope = $('#envelope');
-            const btnOpen = $("#open");
             const btnReset = $("#reset");
-            envelope.on('click', open);
-            btnOpen.on('click', open);
+            
+            // No toggle, always open
             btnReset.on('click', close);
-            function open() {
-                envelope.removeClass("close").addClass("open");
-            }
+
             function close() {
-                envelope.removeClass("open").addClass("close");
+                // You can remove this function if no closing functionality is desired
+                // For now, just remove the translate to bring the letter back down
+                envelope.find('.letter').css('transform', 'translateY(0) rotate(0)');
             }
         });
     </script>
