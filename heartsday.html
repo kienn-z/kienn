@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's day greetings for ely</title>
+    <title>valentine's day greetings for ely</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-env: #F62217;
-            --color-env2: #D43A31; /* Adjusted color for better visibility */
+            --color-env2: #E67E22; /* Adjusted color for envelope 2 - less red */
             --color-flap: #ff8da1;
             --color-bg: #7E354D;
             --color-heart: #ff85a2;
@@ -60,6 +60,10 @@
             box-shadow: 0 2px 26px rgba(0,0,0,.08);
             padding: 15px;
             box-sizing: border-box;
+            /* Show letter content always */
+            transform: translateY(-60px) rotate(-2deg);
+            transition: transform 0.4s 0.6s ease, z-index 0.6s;
+            z-index: 2;
         }
         .letter:after {
             content: '';
@@ -107,7 +111,7 @@
             z-index: 5;
         }
         .close .letter {
-            transform: translateY(0px); 
+            transform: translateY(-60px) rotate(-2deg); /* Show Letter Content */
             transition: transform 0.4s ease, z-index 1s;
             z-index: 1;
         }
@@ -261,12 +265,12 @@
             const envelope = $('#envelope');
             const btnOpen = $("#open");
             const btnReset = $("#reset");
-            envelope.on('click', open);
-            btnOpen.on('click', open);
+
+            //  Remove the toggle functionality, as the letter needs to always be open
+            btnOpen.hide(); // Hide the open button
+
             btnReset.on('click', close);
-            function open() {
-                envelope.removeClass("close").addClass("open");
-            }
+
             function close() {
                 envelope.removeClass("open").addClass("close");
             }
