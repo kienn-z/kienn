@@ -8,7 +8,7 @@
             --color-env: #FFB6C1;
             --color-env2: #ff91a4;
             --color-flap: #ff80ab;
-            --color-bg: #ff69b4;
+            --color-bg: #feeef5;        /* FIXED: Romantic blush pink */
             --color-heart: #ff1493;
             --color-sparkle: #fff;
             --wax-red: #c71585;
@@ -209,7 +209,7 @@
             top: 5%;
             padding: 30px;
             box-sizing: border-box;
-            z-index: 12;  /* Above everything */
+            z-index: 12;
             transform: scale(0.05) rotateY(90deg);
             opacity: 0;
             visibility: hidden;
@@ -255,7 +255,7 @@
             height: 28px;
             border: 3px solid rgba(255,192,203,0.9);
             border-radius: 6px;
-            z-index: 13;  /* Above letter content */
+            z-index: 13;
             background: inherit;
         }
         .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
@@ -287,14 +287,14 @@
         .open .flap-right { transform: rotateY(-95deg) translateX(75px); transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s; }
         .open .wax-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.7s ease 0.5s; }
 
-        /* EFFECTS - FIXED Z-INDEX BEHIND LETTER */
+        /* EFFECTS - BEHIND LETTER */
         .hearts, .sparkles { 
             position: absolute; 
             top: 0; 
             left: 0; 
             right: 0; 
             height: 100%; 
-            z-index: 10;  /* FIXED: Behind letter (z-index:12) */
+            z-index: 10; 
             pointer-events: none; 
         }
         .close .hearts, .close .sparkles { opacity: 0; }
@@ -329,11 +329,11 @@
         @keyframes sparkleTwinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.8); } }
 
         body {
-            background: linear-gradient(135deg, var(--color-bg), #ffb6c1);
+            background: linear-gradient(135deg, #feeef5, #f8e1ed, #fce4ec);  /* NEW: Romantic blush gradient */
             margin: 0;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            flex-direction:  column;
             align-items: center;
         }
 
@@ -388,7 +388,7 @@
                 </div>
             </div>
             
-            <!-- EFFECTS - NOW BEHIND LETTER -->
+            <!-- EFFECTS - BEHIND LETTER -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
