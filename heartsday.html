@@ -25,6 +25,7 @@
             background-color: var(--color-flap);
             box-shadow: 0 6px 25px rgba(0,0,0,.15);
             cursor: pointer;
+            overflow: hidden;
         }
 
         .front {
@@ -32,42 +33,51 @@
             width: 0;
             height: 0;
             z-index: 3;
+            top: 0;
+            left: 0;
         }
 
-        /* PERFECT MATCH FLAP - Covers EVERY corner exactly */
+        /* FULL FRONT COVERAGE FLAP - Covers ENTIRE envelope */
         .flap {
-            border-left: 560px solid transparent;
-            border-right: 250px solid transparent;
-            border-bottom: 0px solid transparent;
-            border-top: 250px solid var(--color-flap);
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 500px;
+            height: 210px;
+            background-color: var(--color-flap);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
             transform-origin: top;
             pointer-events: none;
-            /* Exact corner matching */
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+            z-index: 6;
         }
 
-        /* PERFECT MATCH POCKET - Identical dimensions */
+        /* FULL FRONT COVERAGE POCKET - Identical to flap */
         .pocket {
-            border-left: 250px solid var(--color-env);
-            border-right: 250px solid var(--color-env);
-            border-bottom: 210px solid var(--color-env2);
-            border-top: 0px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 420px;
+            background: linear-gradient(to bottom, var(--color-env) 0%, var(--color-env2) 50%);
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
+            z-index: 4;
         }
 
         .letter {
-            position: relative;
+            position: absolute;
             background-color: #e0d9dd;
             width: 92%;
-            margin: 0 auto;
             height: 92%;
+            left: 4%;
             top: 4%;
             border-radius: 10px;
             box-shadow: 0 3px 30px rgba(0,0,0,.12);
             padding: 35px;
             box-sizing: border-box;
+            z-index: 2;
+            transition: all 0.5s ease;
         }
 
         .letter:after {
@@ -85,12 +95,11 @@
 
         .message {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             font-family: 'Handlee', cursive;
             color: #d46a84;
             text-align: center;
             line-height: 1.6;
-            padding-top: 5px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -115,28 +124,32 @@
             animation: float 3s ease-in-out infinite;
         }
 
+        /* OPEN STATE - Flap flips up completely */
         .open .flap {
             transform: rotateX(180deg);
-            transition: transform 0.5s ease, z-index 0.7s;
             z-index: 1;
+            transition: transform 0.6s ease 0.2s, z-index 0.8s;
         }
 
         .close .flap {
             transform: rotateX(0deg);
-            transition: transform 0.5s 0.7s ease, z-index 1.2s;
-            z-index: 5;
+            z-index: 6;
+            transition: transform 0.6s ease 0.8s, z-index 1s;
         }
 
+        /* LETTER ANIMATION - Fully visible when open */
         .close .letter {
-            transform: translateY(0px); 
-            transition: transform 0.5s ease, z-index 1.2s;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0.3;
             z-index: 1;
+            transition: all 0.6s ease;
         }
 
         .open .letter {
-            transform: translateY(-90px) rotate(-1deg);
-            transition: transform 0.5s 0.7s ease, z-index 0.7s;
-            z-index: 2;
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            z-index: 3;
+            transition: all 0.6s ease 0.4s;
         }
 
         .letter-corner {
@@ -145,7 +158,7 @@
             height: 25px;
             border: 3px solid #ffd1dc;
             border-radius: 8px;
-            z-index: 3;
+            z-index: 4;
         }
         .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
         .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
@@ -156,12 +169,12 @@
             left: 0;
             right: 0;
             z-index: 2;
+            pointer-events: none;
         }
 
         .heart, .sparkle {
             position: absolute;
             bottom: 0;
-            pointer-events: none;
         }
 
         .heart:before,
@@ -270,7 +283,7 @@
             position: absolute;
             top: 25px;
             right: 30px;
-            z-index: 4;
+            z-index: 7;
             box-shadow: 0 3px 15px rgba(0,0,0,0.4);
         }
     </style>
@@ -287,7 +300,7 @@
                 <div class="message">
                     <p>Happy Valentine's Day, Isay! 💕</p>
                     <p>My dearest Isay, every moment with you feels like a beautiful dream. Your smile lights up my world brighter than a thousand stars.</p>
-                    <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my everything. Forever yours.</p>
+                    <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my everything. Forever yours with all my love.</p>
                 </div>
             </div>
             <div class="hearts">
