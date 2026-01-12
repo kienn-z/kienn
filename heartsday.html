@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting</title>
+    <title>Valentine's Day Greeting - 4 Flaps</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,8 +18,7 @@
             position: relative;
             width: 500px;
             height: 420px;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+            border-radius: 12px;
             margin: 0 auto;
             top: 150px;
             background-color: var(--color-flap);
@@ -28,31 +27,55 @@
             overflow: hidden;
         }
 
-        .front {
-            position: absolute;
-            width: 0;
-            height: 0;
-            z-index: 3;
-            top: 0;
-            left: 0;
-        }
-
-        /* FULL FRONT COVERAGE FLAP - Covers ENTIRE envelope */
+        /* FOUR FLAPS - Top, Bottom, Left, Right */
         .flap {
             position: absolute;
-            top: -5px;
-            left: 0;
-            width: 500px;
-            height: 210px;
             background-color: var(--color-flap);
+            z-index: 6;
+            transition: all 0.6s ease;
+        }
+
+        .flap-top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 210px;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             transform-origin: top;
-            pointer-events: none;
-            z-index: 6;
         }
 
-        /* FULL FRONT COVERAGE POCKET - Identical to flap */
+        .flap-bottom {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 210px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            transform-origin: bottom;
+        }
+
+        .flap-left {
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            border-bottom-right-radius: 12px;
+            border-top-right-radius: 12px;
+            transform-origin: left;
+        }
+
+        .flap-right {
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            border-bottom-left-radius: 12px;
+            border-top-left-radius: 12px;
+            transform-origin: right;
+        }
+
+        /* POCKET BACKGROUND */
         .pocket {
             position: absolute;
             top: 0;
@@ -60,8 +83,7 @@
             width: 500px;
             height: 420px;
             background: linear-gradient(to bottom, var(--color-env) 0%, var(--color-env2) 50%);
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+            border-radius: 12px;
             z-index: 4;
         }
 
@@ -77,7 +99,7 @@
             padding: 35px;
             box-sizing: border-box;
             z-index: 2;
-            transition: all 0.5s ease;
+            transition: all 0.6s ease;
         }
 
         .letter:after {
@@ -88,7 +110,7 @@
             left: 0;
             right: 0;
             background-image: linear-gradient(180deg, 
-                rgba(255,255,255,0.00) 20%, 
+                rgba(255,255,236,0.00) 20%, 
                 rgba(255,231,236,0.75) 50%, 
                 rgba(255,231,236,1.00) 100%);
         }
@@ -124,32 +146,43 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* OPEN STATE - Flap flips up completely */
-        .open .flap {
-            transform: rotateX(180deg);
-            z-index: 1;
-            transition: transform 0.6s ease 0.2s, z-index 0.8s;
-        }
+        /* CLOSED STATE - All flaps covering letter */
+        .close .flap-top { transform: rotateX(0deg); }
+        .close .flap-bottom { transform: rotateX(0deg); }
+        .close .flap-left { transform: rotateY(0deg); }
+        .close .flap-right { transform: rotateY(0deg); }
 
-        .close .flap {
-            transform: rotateX(0deg);
-            z-index: 6;
-            transition: transform 0.6s ease 0.8s, z-index 1s;
-        }
-
-        /* LETTER ANIMATION - Fully visible when open */
         .close .letter {
             transform: translateY(20px) scale(0.95);
-            opacity: 0.3;
-            z-index: 1;
+            opacity: 0.1;
             transition: all 0.6s ease;
+        }
+
+        /* OPEN STATE - All flaps flip open, letter revealed */
+        .open .flap-top {
+            transform: rotateX(180deg);
+            transition: transform 0.6s ease 0.1s;
+        }
+
+        .open .flap-bottom {
+            transform: rotateX(-180deg);
+            transition: transform 0.6s ease 0.2s;
+        }
+
+        .open .flap-left {
+            transform: rotateY(-180deg);
+            transition: transform 0.6s ease 0.3s;
+        }
+
+        .open .flap-right {
+            transform: rotateY(180deg);
+            transition: transform 0.6s ease 0.4s;
         }
 
         .open .letter {
             transform: translateY(0) scale(1);
             opacity: 1;
-            z-index: 3;
-            transition: all 0.6s ease 0.4s;
+            transition: all 0.6s ease 0.6s;
         }
 
         .letter-corner {
@@ -168,7 +201,7 @@
             top: 100px;
             left: 0;
             right: 0;
-            z-index: 2;
+            z-index: 5;
             pointer-events: none;
         }
 
@@ -177,8 +210,7 @@
             bottom: 0;
         }
 
-        .heart:before,
-        .heart:after {
+        .heart:before, .heart:after {
             content: "";
             position: absolute;
             left: 30px;
@@ -205,8 +237,7 @@
             animation: sparkleTwinkle 1s infinite;
         }
 
-        .close .heart,
-        .close .sparkle {
+        .close .heart, .close .sparkle {
             opacity: 0;
             animation: none;
         }
@@ -214,30 +245,22 @@
         .a1 { left: 15%; transform: scale(0.7); animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
         .a2 { left: 50%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
         .a3 { left: 75%; transform: scale(0.6); animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }
-
         .s1 { left: 25%; animation: sparkleUp 3s linear infinite; }
         .s2 { left: 55%; animation: sparkleUp 4s linear infinite; }
         .s3 { left: 80%; animation: sparkleUp 5s linear infinite; }
 
         @keyframes slideUp {
-            0% { top: 0; }
-            100% { top: -700px; }
+            0% { top: 0; } 100% { top: -700px; }
         }
-
         @keyframes sideSway {
-            0% { margin-left: 0; }
-            50% { margin-left: 60px; }
-            100% { margin-left: 0; }
+            0% { margin-left: 0; } 50% { margin-left: 60px; } 100% { margin-left: 0; }
         }
-
         @keyframes sparkleUp {
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
         }
-
         @keyframes sparkleTwinkle {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.6); }
+            0%, 100% { transform: scale(1); } 50% { transform: scale(1.6); }
         }
 
         body {
@@ -281,9 +304,9 @@
             height: 55px;
             border-radius: 50%;
             position: absolute;
-            top: 25px;
-            right: 30px;
-            z-index: 7;
+            top: 182px;
+            left: 222px;
+            z-index: 8;
             box-shadow: 0 3px 15px rgba(0,0,0,0.4);
         }
     </style>
@@ -292,8 +315,14 @@
     <div class="envlope-wrapper">
         <div id="envelope" class="close">
             <div class="wax-seal"></div>
-            <div class="front flap"></div>
-            <div class="front pocket"></div>
+            <div class="pocket"></div>
+            
+            <!-- FOUR FLAPS -->
+            <div class="flap flap-top front"></div>
+            <div class="flap flap-bottom front"></div>
+            <div class="flap flap-left front"></div>
+            <div class="flap flap-right front"></div>
+            
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
@@ -303,6 +332,7 @@
                     <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my everything. Forever yours with all my love.</p>
                 </div>
             </div>
+            
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
