@@ -199,18 +199,18 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER WITH TITLE - NOW VISIBLE AND FITTED */
+        /* PERFECT LETTER - "Happy Valentine's Day" VISIBLE + FITS */
         .letter {
             position: absolute;
             background: transparent;
-            width: 92%;
-            height: 92%;
-            left: 4%;
-            top: 4%;
+            width: 90%;
+            height: 90%;
+            left: 5%;
+            top: 5%;
             padding: 30px;
             box-sizing: border-box;
             z-index: 5;
-            transform: scale(0.1) rotateY(90deg);
+            transform: scale(0.05) rotateY(90deg);
             opacity: 0;
             visibility: hidden;
             transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.9s;
@@ -232,30 +232,28 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.2em;
-            overflow: hidden;
-            word-wrap: break-word;
+            font-size: 1.18em;  /* PERFECT SIZE - VISIBLE + FITS */
         }
 
-        /* TITLE - LARGER AND BOLD */
-        .letter-content .title {
-            font-size: 1.6em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #c2185b;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .letter-content p:not(.title) {
+        .letter-content p {
             margin: 10px 0;
             text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            padding: 0 5px;  /* Small side padding */
+        }
+
+        /* FIRST LINE SPECIAL - BIGGER & BOLD */
+        .letter-content p:first-child {
+            font-size: 1.45em;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
         }
 
         /* LETTER CORNERS */
         .letter-corner {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border: 3px solid rgba(255,192,203,0.9);
             border-radius: 6px;
             z-index: 6;
@@ -277,7 +275,7 @@
 
         /* STATES */
         .close .letter { 
-            transform: scale(0.1) rotateY(90deg); 
+            transform: scale(0.05) rotateY(90deg); 
             opacity: 0; 
             visibility: hidden; 
             z-index: 1; 
@@ -363,12 +361,12 @@
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- FIXED LETTER WITH PROMINENT TITLE -->
+            <!-- FIXED LETTER WITH "HAPPY VALENTINE'S DAY" VISIBLE -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
                 <div class="letter-content">
-                    <p class="title">Happy Valentine's Day, my dearest Isay! 💕</p>
+                    <p>Happy Valentine's Day, my dearest Isay! 💕</p>
                     <p>Every moment spent with you feels like living in the most beautiful dream I could ever imagine. Your smile illuminates my entire world brighter than a thousand stars shining in the night sky.</p>
                     <p>I cherish every single laugh we share together, every tender glance that speaks volumes without words, every precious moment that makes my heart beat just a little faster when you're near me.</p>
                     <p>You are my heart, my joy, my forever love, my everything. With all my love today, tomorrow, and every single day that follows. Always and forever yours. 💖</p>
