@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - 4 Flaps Perfect</title>
+    <title>Valentine's Day Greeting - 4 Triangular Flaps</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,55 +39,70 @@
             z-index: 3;
         }
 
-        /* FOUR FLAPS - Perfect coverage */
+        /* FOUR TRIANGULAR FLAPS */
         .flap {
             position: absolute;
-            background-color: var(--color-flap);
             z-index: 6;
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border: 2px solid rgba(255,255,255,0.3);
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        /* Top flap - covers top half */
+        /* TOP TRIANGULAR FLAP */
         .flap-top {
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
+            left: 50%;
+            margin-left: -175px;
+            width: 0;
+            height: 0;
+            border-left: 175px solid transparent;
+            border-right: 175px solid transparent;
+            border-bottom: 210px solid var(--color-flap);
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             transform-origin: top;
         }
 
-        /* Bottom flap - covers bottom half */
+        /* BOTTOM TRIANGULAR FLAP */
         .flap-bottom {
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
+            left: 50%;
+            margin-left: -175px;
+            width: 0;
+            height: 0;
+            border-left: 175px solid transparent;
+            border-right: 175px solid transparent;
+            border-top: 210px solid var(--color-flap);
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             transform-origin: bottom;
         }
 
-        /* Left flap - covers left side */
+        /* LEFT TRIANGULAR FLAP */
         .flap-left {
-            top: 25%;
+            top: 50%;
+            margin-top: -105px;
             left: 0;
-            width: 50%;
-            height: 50%;
+            width: 0;
+            height: 0;
+            border-top: 105px solid transparent;
+            border-bottom: 105px solid transparent;
+            border-right: 250px solid var(--color-flap);
             border-top-right-radius: 12px;
             border-bottom-right-radius: 12px;
             transform-origin: left center;
         }
 
-        /* Right flap - covers right side */
+        /* RIGHT TRIANGULAR FLAP */
         .flap-right {
-            top: 25%;
+            top: 50%;
+            margin-top: -105px;
             right: 0;
-            width: 50%;
-            height: 50%;
+            width: 0;
+            height: 0;
+            border-top: 105px solid transparent;
+            border-bottom: 105px solid transparent;
+            border-left: 250px solid var(--color-flap);
             border-top-left-radius: 12px;
             border-bottom-left-radius: 12px;
             transform-origin: right center;
@@ -154,7 +169,7 @@
         .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
         .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
-        /* WAX SEAL */
+        /* CENTER WAX SEAL */
         .wax-seal {
             position: absolute;
             top: 50%;
@@ -179,14 +194,14 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* CLOSED STATE - All flaps closed, letter hidden */
+        /* CLOSED STATE */
         .close .flap-top { transform: rotateX(0deg); }
         .close .flap-bottom { transform: rotateX(0deg); }
         .close .flap-left { transform: rotateY(0deg); }
         .close .flap-right { transform: rotateY(0deg); }
         .close .letter { transform: scale(0.8) rotateY(30deg); opacity: 0; }
 
-        /* OPEN STATE - Dramatic 4-flap reveal */
+        /* OPEN STATE - 4 triangular flaps fly open */
         .open .flap-top {
             transform: rotateX(-120deg);
             transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
@@ -207,7 +222,6 @@
             transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
         }
 
-        /* LETTER POP UP - Full reveal after flaps open */
         .open .letter {
             transform: scale(1) rotateY(0deg);
             opacity: 1;
@@ -309,19 +323,19 @@
 <body>
     <div class="envlope-wrapper">
         <div id="envelope" class="close">
-            <!-- Wax Seal -->
+            <!-- CENTER WAX SEAL -->
             <div class="wax-seal"></div>
             
-            <!-- Pocket/Body -->
+            <!-- POCKET/BODY -->
             <div class="pocket"></div>
             
-            <!-- FOUR PERFECT FLAPS -->
+            <!-- FOUR TRIANGULAR FLAPS -->
             <div class="flap flap-top"></div>
             <div class="flap flap-bottom"></div>
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- LETTER - Pops up when opened -->
+            <!-- LETTER -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
@@ -332,7 +346,7 @@
                 </div>
             </div>
             
-            <!-- Hearts & Sparkles -->
+            <!-- HEARTS & SPARKLES -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
