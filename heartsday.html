@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - Perfect 90-Word Design</title>
+    <title>Valentine's Day Greeting - Perfect 90-Word Fit</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -199,15 +199,15 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER - 90 WORDS EXACTLY WITHIN WHITE SURFACE */
+        /* PERFECT LETTER - SMALLER FONT TO FIT WHITE SURFACE */
         .letter {
             position: absolute;
             background: transparent;
-            width: 92%;
-            height: 92%;
-            left: 4%;
-            top: 4%;
-            padding: 50px;
+            width: 94%;  /* Slightly tighter fit */
+            height: 94%;
+            left: 3%;
+            top: 3%;
+            padding: 40px;  /* Reduced padding */
             box-sizing: border-box;
             z-index: 4;
             transform: scale(0) rotateY(90deg);
@@ -227,31 +227,32 @@
             font-family: 'Handlee', cursive;
             color: #d63384;
             text-align: center;
-            line-height: 1.75;
+            line-height: 1.65;  /* Tighter line height */
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.55em;
+            font-size: 1.25em;  /* REDUCED FROM 1.55em */
         }
 
         .letter-content p {
-            margin: 20px 0;
+            margin: 15px 0;  /* Reduced margins */
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            word-wrap: break-word;
         }
 
-        /* LETTER CORNERS */
+        /* LETTER CORNERS - Adjusted position */
         .letter-corner {
             position: absolute;
-            width: 36px;
-            height: 36px;
-            border: 4px solid rgba(255,192,203,0.9);
-            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255,192,203,0.9);
+            border-radius: 6px;
             z-index: 6;
             background: inherit;
         }
-        .corner-tl { top: 28px; left: 28px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 28px; right: 28px; border-left: none; border-top: none; }
+        .corner-tl { top: 25px; left: 25px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 25px; right: 25px; border-left: none; border-top: none; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -338,7 +339,7 @@
             <!-- WAX SEAL -->
             <div class="wax-seal"></div>
             
-            <!-- WHITE POCKET SURFACE - BLANK WHEN CLOSED -->
+            <!-- WHITE POCKET SURFACE -->
             <div class="pocket"></div>
             
             <!-- DECORATED FLAPS -->
@@ -347,7 +348,7 @@
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- 90-WORD LETTER - ONLY ON WHITE SURFACE WHEN OPENED -->
+            <!-- 90-WORD LETTER - NOW PERFECTLY FITS */
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
