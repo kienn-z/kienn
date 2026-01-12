@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - Perfect 90-Word Fit</title>
+    <title>Valentine's Day Greeting - Perfect Letter Fit</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,7 +16,7 @@
 
         #envelope {
             position: relative;
-            width: 600px;  /* Perfect size for 90 words */
+            width: 600px;
             height: 500px;
             border-radius: 15px;
             margin: 0 auto;
@@ -27,7 +27,7 @@
             overflow: hidden;
         }
 
-        /* ENVELOPE COVER DESIGN */
+        /* ENVELOPE COVER */
         #envelope::before {
             content: 'To: My Dearest Isay 💕';
             position: absolute;
@@ -42,7 +42,19 @@
             letter-spacing: 1px;
         }
 
-        /* PERFECTLY PROPORTIONED FLAPS */
+        /* WHITE SURFACE - Base envelope interior */
+        .pocket {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #fdf8fa, #f0e8ee);
+            border-radius: 15px;
+            z-index: 2;
+        }
+
+        /* FLAPS */
         .flap {
             position: absolute;
             z-index: 6;
@@ -161,20 +173,19 @@
             font-size: 28px;
         }
 
-        /* PERFECT LETTER - Fits exactly within envelope */
+        /* LETTER - ONLY INSIDE WHITE SURFACE */
         .letter {
             position: absolute;
-            background: linear-gradient(145deg, #fdf8fa, #f0e8ee);
-            width: 92%;
-            height: 92%;
-            left: 4%;
-            top: 4%;
-            border-radius: 12px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
-            padding: 50px;
+            background: transparent;  /* Transparent - uses pocket background */
+            width: 90%;
+            height: 90%;
+            left: 5%;
+            top: 5%;
+            border-radius: 10px;
+            padding: 45px;
             box-sizing: border-box;
-            z-index: 3;
-            transform: scale(0.95) rotateY(90deg);
+            z-index: 4;
+            transform: scale(0) rotateY(90deg) translateZ(0);
             opacity: 0;
             transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.9s;
         }
@@ -194,25 +205,28 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.55em;
+            font-size: 1.5em;
         }
 
         .letter-content p {
-            margin: 20px 0;
+            margin: 18px 0;
             text-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
+        /* LETTER CORNERS ON WHITE SURFACE */
         .letter-corner {
             position: absolute;
-            width: 35px;
-            height: 35px;
-            border: 4px solid #ffd1dc;
-            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255,209,220,0.8);
+            border-radius: 6px;
             z-index: 5;
+            background: inherit;
         }
-        .corner-tl { top: 25px; left: 25px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 25px; right: 25px; border-left: none; border-top: none; }
+        .corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
 
+        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -224,10 +238,20 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* STATES */
-        .close .letter { transform: scale(0.95) rotateY(90deg); opacity: 0; z-index: 3; }
+        /* CLOSED - LETTER COMPLETELY HIDDEN */
+        .close .letter { 
+            transform: scale(0) rotateY(90deg); 
+            opacity: 0; 
+            visibility: hidden; 
+            z-index: 1; 
+        }
+
+        .close .flap-top, .close .flap-bottom, .close .flap-left, .close .flap-right { 
+            transform: rotateX(0deg) rotateY(0deg); 
+        }
         .close .wax-seal { transform: translate(-50%, -50%) scale(1); }
 
+        /* OPEN STATES */
         .open .flap-top { 
             transform: rotateX(-145deg) translateY(-80px); 
             transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s; 
@@ -260,6 +284,9 @@
             z-index: 7;
             pointer-events: none;
         }
+        .close .hearts, .close .sparkles { opacity: 0; }
+        .open .hearts, .open .sparkles { opacity: 1; }
+
         .heart, .sparkle { position: absolute; bottom: 0; }
         .heart:before, .heart:after {
             content: "";
@@ -281,8 +308,6 @@
             border-radius: 50%;
             animation: sparkleTwinkle 1s infinite;
         }
-        .close .hearts, .close .sparkles { opacity: 0; }
-        .open .hearts, .open .sparkles { opacity: 1; }
 
         .a1 { left: 15%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
         .a2 { left: 50%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
@@ -334,21 +359,24 @@
             <!-- WAX SEAL -->
             <div class="wax-seal"></div>
             
-            <!-- FLAPS WITH DESIGNS -->
+            <!-- WHITE SURFACE -->
+            <div class="pocket"></div>
+            
+            <!-- FLAPS -->
             <div class="flap flap-top"></div>
             <div class="flap flap-bottom"></div>
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- PERFECTLY FITTED LETTER -->
+            <!-- LETTER - ONLY ON WHITE SURFACE WHEN OPENED -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
                 <div class="letter-content">
                     <p>Happy Valentine's Day, Isay! 💕</p>
-                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars in the night sky.</p>
-                    <p>I cherish every single laugh we share together, every glance that speaks volumes without words, every moment that makes my heart beat just a little faster when you're near.</p>
-                    <p>You are my heart, my joy, my forever love. With all my love, today and every single day that follows. Always yours forever. 💖</p>
+                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars.</p>
+                    <p>I cherish every laugh, every glance, every moment we share together. You make my heart beat faster with just one look from your beautiful eyes.</p>
+                    <p>You are my heart, my joy, my forever love. With all my love, today and every single day. Always yours forever. 💖</p>
                 </div>
             </div>
             
