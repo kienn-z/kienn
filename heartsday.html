@@ -166,8 +166,8 @@
             opacity: 0.8;
         }
 
-        .flap-top::before { bottom: 20px; left: 50%; width: 100px; height: 4px; transform: translateX(-50%); }    /* HIGHER */
-        .flap-bottom::after { top: 20px; left: 50%; width: 90px; height: 4px; transform: translateX(-50%); }     /* HIGHER */
+        .flap-top::before { bottom: 20px; left: 50%; width: 100px; height: 4px; transform: translateX(-50%); }
+        .flap-bottom::after { top: 20px; left: 50%; width: 90px; height: 4px; transform: translateX(-50%); }
         .flap-left::before { right: 15px; top: 50%; width: 4px; height: 90px; transform: translateY(-50%); }
         .flap-right::after { left: 15px; top: 50%; width: 4px; height: 90px; transform: translateY(-50%); }
 
@@ -199,7 +199,7 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER - INTRO LOWERED MORE */
+        /* PERFECT LETTER - INTRO LOWERED SIGNIFICANTLY + SMALLER FONT */
         .letter {
             position: absolute;
             background: transparent;
@@ -207,7 +207,7 @@
             height: 90%;
             left: 5%;
             top: 5%;
-            padding: 45px 30px 30px 30px;  /* FIXED: MORE top padding (45px) */
+            padding: 55px 25px 25px 25px;  /* FIXED: 55px top padding */
             box-sizing: border-box;
             z-index: 12;
             transform: scale(0.05) rotateY(90deg);
@@ -231,25 +231,25 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.18em;
-            padding-top: 25px;  /* FIXED: MORE top spacing */
+            font-size: 1.05em;  /* FIXED: Smaller base font (was 1.18em) */
+            padding-top: 35px;  /* FIXED: More top spacing */
         }
 
         .letter-content p {
-            margin: 10px 0;
+            margin: 12px 0;  /* FIXED: More vertical spacing */
             text-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            padding: 0 5px;
+            padding: 0 8px;
         }
 
-        /* FIRST LINE - NOW CLEARLY BELOW YELLOW LINE */
+        /* FIRST LINE - SMALLER + LOWER */
         .letter-content p:first-child {
-            font-size: 1.45em;
+            font-size: 1.28em;  /* FIXED: Smaller (was 1.45em) */
             font-weight: 600;
-            margin-top: 10px;     /* FIXED: More top margin */
-            margin-bottom: 15px;
+            margin-top: 15px;   /* FIXED: More top margin */
+            margin-bottom: 18px;
         }
 
-        /* LETTER CORNERS */
+        /* LETTER CORNERS - ADJUSTED */
         .letter-corner {
             position: absolute;
             width: 28px;
@@ -259,7 +259,7 @@
             z-index: 13;
             background: inherit;
         }
-        .corner-tl { top: 25px; left: 20px; border-right: none; border-bottom: none; }  /* FIXED: Higher corner */
+        .corner-tl { top: 30px; left: 20px; border-right: none; border-bottom: none; }
         .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
         @keyframes float {
@@ -288,7 +288,7 @@
         .open .flap-right { transform: rotateY(-95deg) translateX(75px); transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s; }
         .open .wax-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.7s ease 0.5s; }
 
-        /* EFFECTS - LOWER CENTER HEART OPACITY */
+        /* EFFECTS */
         .hearts, .sparkles { 
             position: absolute; 
             top: 0; 
@@ -317,9 +317,8 @@
         .heart:after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
         .sparkle { width: 14px; height: 14px; background: var(--color-sparkle); border-radius: 50%; animation: sparkleTwinkle 1s infinite; }
 
-        /* Hearts positioned safely - center heart lower opacity */
         .a1 { left: 10%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
-        .a2 { left: 45%; opacity: 0.4; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }  /* FIXED: Lower opacity */
+        .a2 { left: 45%; opacity: 0.4; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
         .a3 { left: 65%; animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }
         .s1 { left: 25%; animation: sparkleUp 3s linear infinite; }
         .s2 { left: 55%; animation: sparkleUp 4s linear infinite; }
