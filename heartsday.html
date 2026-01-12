@@ -199,7 +199,7 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER - INTRO LOWERED SIGNIFICANTLY + SMALLER FONT */
+        /* PERFECT LETTER - MOVED HIGHER BY 1 LINE SPACING */
         .letter {
             position: absolute;
             background: transparent;
@@ -207,7 +207,7 @@
             height: 90%;
             left: 5%;
             top: 5%;
-            padding: 55px 25px 25px 25px;  /* FIXED: 55px top padding */
+            padding: 50px 25px 25px 25px;  /* FIXED: Reduced top padding by ~1 line (55px → 50px) */
             box-sizing: border-box;
             z-index: 12;
             transform: scale(0.05) rotateY(90deg);
@@ -231,21 +231,21 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.05em;  /* FIXED: Smaller base font (was 1.18em) */
-            padding-top: 35px;  /* FIXED: More top spacing */
+            font-size: 1.05em;
+            padding-top: 30px;  /* FIXED: Reduced by ~1 line (35px → 30px) */
         }
 
         .letter-content p {
-            margin: 12px 0;  /* FIXED: More vertical spacing */
+            margin: 12px 0;
             text-shadow: 0 2px 6px rgba(0,0,0,0.2);
             padding: 0 8px;
         }
 
-        /* FIRST LINE - SMALLER + LOWER */
+        /* FIRST LINE */
         .letter-content p:first-child {
-            font-size: 1.28em;  /* FIXED: Smaller (was 1.45em) */
+            font-size: 1.28em;
             font-weight: 600;
-            margin-top: 15px;   /* FIXED: More top margin */
+            margin-top: 12px;   /* FIXED: Reduced by ~1 line (15px → 12px) */
             margin-bottom: 18px;
         }
 
@@ -259,7 +259,7 @@
             z-index: 13;
             background: inherit;
         }
-        .corner-tl { top: 30px; left: 20px; border-right: none; border-bottom: none; }
+        .corner-tl { top: 27px; left: 20px; border-right: none; border-bottom: none; }  /* FIXED: Slightly higher */
         .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
         @keyframes float {
