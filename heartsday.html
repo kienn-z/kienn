@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - 4 Flaps</title>
+    <title>Valentine's Day Greeting - 4 Flaps Perfect</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,118 +21,151 @@
             border-radius: 12px;
             margin: 0 auto;
             top: 150px;
-            background-color: var(--color-flap);
-            box-shadow: 0 6px 25px rgba(0,0,0,.15);
+            background: linear-gradient(145deg, var(--color-env), var(--color-env2));
+            box-shadow: 0 8px 32px rgba(0,0,0,.2);
             cursor: pointer;
             overflow: hidden;
         }
 
-        /* FOUR FLAPS - Top, Bottom, Left, Right */
+        /* POCKET - Base envelope body */
+        .pocket {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, var(--color-env), var(--color-env2));
+            border-radius: 12px;
+            z-index: 3;
+        }
+
+        /* FOUR FLAPS - Perfect coverage */
         .flap {
             position: absolute;
             background-color: var(--color-flap);
             z-index: 6;
-            transition: all 0.6s ease;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
+        /* Top flap - covers top half */
         .flap-top {
             top: 0;
             left: 0;
             width: 100%;
-            height: 210px;
+            height: 50%;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             transform-origin: top;
         }
 
+        /* Bottom flap - covers bottom half */
         .flap-bottom {
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 210px;
+            height: 50%;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             transform-origin: bottom;
         }
 
+        /* Left flap - covers left side */
         .flap-left {
-            top: 0;
+            top: 25%;
             left: 0;
-            width: 250px;
-            height: 100%;
-            border-bottom-right-radius: 12px;
+            width: 50%;
+            height: 50%;
             border-top-right-radius: 12px;
-            transform-origin: left;
+            border-bottom-right-radius: 12px;
+            transform-origin: left center;
         }
 
+        /* Right flap - covers right side */
         .flap-right {
-            top: 0;
+            top: 25%;
             right: 0;
-            width: 250px;
-            height: 100%;
-            border-bottom-left-radius: 12px;
+            width: 50%;
+            height: 50%;
             border-top-left-radius: 12px;
-            transform-origin: right;
+            border-bottom-left-radius: 12px;
+            transform-origin: right center;
         }
 
-        /* POCKET BACKGROUND */
-        .pocket {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 500px;
-            height: 420px;
-            background: linear-gradient(to bottom, var(--color-env) 0%, var(--color-env2) 50%);
-            border-radius: 12px;
-            z-index: 4;
-        }
-
+        /* LETTER - Hidden then pops up */
         .letter {
             position: absolute;
-            background-color: #e0d9dd;
-            width: 92%;
-            height: 92%;
-            left: 4%;
-            top: 4%;
-            border-radius: 10px;
-            box-shadow: 0 3px 30px rgba(0,0,0,.12);
-            padding: 35px;
+            background: linear-gradient(145deg, #f8f1f5, #e8d9e0);
+            width: 90%;
+            height: 90%;
+            left: 5%;
+            top: 5%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 40px;
             box-sizing: border-box;
-            z-index: 2;
-            transition: all 0.6s ease;
+            z-index: 4;
+            transform: scale(0.8) rotateY(30deg);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
         }
 
         .letter:after {
             content: '';
             position: absolute;
             top: 0;
-            bottom: 0;
             left: 0;
             right: 0;
-            background-image: linear-gradient(180deg, 
-                rgba(255,255,236,0.00) 20%, 
-                rgba(255,231,236,0.75) 50%, 
-                rgba(255,231,236,1.00) 100%);
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,231,236,0.8) 0%, transparent 50%);
+            border-radius: 12px;
         }
 
         .message {
-            position: relative;
-            z-index: 3;
             font-family: 'Handlee', cursive;
             color: #d46a84;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
         .message p {
-            margin: 12px 0;
-            font-size: 1.4em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            margin: 15px 0;
+            font-size: 1.5em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
             word-wrap: break-word;
+        }
+
+        /* LETTER CORNERS */
+        .letter-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #ffd1dc;
+            border-radius: 8px;
+            z-index: 5;
+        }
+        .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        /* WAX SEAL */
+        .wax-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, var(--wax-red));
+            border-radius: 50%;
+            z-index: 7;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.3);
         }
 
         @keyframes float {
@@ -146,61 +179,48 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* CLOSED STATE - All flaps covering letter */
+        /* CLOSED STATE - All flaps closed, letter hidden */
         .close .flap-top { transform: rotateX(0deg); }
         .close .flap-bottom { transform: rotateX(0deg); }
         .close .flap-left { transform: rotateY(0deg); }
         .close .flap-right { transform: rotateY(0deg); }
+        .close .letter { transform: scale(0.8) rotateY(30deg); opacity: 0; }
 
-        .close .letter {
-            transform: translateY(20px) scale(0.95);
-            opacity: 0.1;
-            transition: all 0.6s ease;
-        }
-
-        /* OPEN STATE - All flaps flip open, letter revealed */
+        /* OPEN STATE - Dramatic 4-flap reveal */
         .open .flap-top {
-            transform: rotateX(180deg);
-            transition: transform 0.6s ease 0.1s;
+            transform: rotateX(-120deg);
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
         }
 
         .open .flap-bottom {
-            transform: rotateX(-180deg);
-            transition: transform 0.6s ease 0.2s;
+            transform: rotateX(120deg);
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
         }
 
         .open .flap-left {
-            transform: rotateY(-180deg);
-            transition: transform 0.6s ease 0.3s;
+            transform: rotateY(90deg);
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
         }
 
         .open .flap-right {
-            transform: rotateY(180deg);
-            transition: transform 0.6s ease 0.4s;
+            transform: rotateY(-90deg);
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
         }
 
+        /* LETTER POP UP - Full reveal after flaps open */
         .open .letter {
-            transform: translateY(0) scale(1);
+            transform: scale(1) rotateY(0deg);
             opacity: 1;
-            transition: all 0.6s ease 0.6s;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
         }
 
-        .letter-corner {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border: 3px solid #ffd1dc;
-            border-radius: 8px;
-            z-index: 4;
-        }
-        .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
-
+        /* Hearts and Sparkles */
         .hearts, .sparkles {
             position: absolute;
-            top: 100px;
+            top: 0;
             left: 0;
             right: 0;
+            height: 100%;
             z-index: 5;
             pointer-events: none;
         }
@@ -237,39 +257,28 @@
             animation: sparkleTwinkle 1s infinite;
         }
 
-        .close .heart, .close .sparkle {
-            opacity: 0;
-            animation: none;
-        }
+        .close .heart, .close .sparkle { opacity: 0; animation: none; }
 
-        .a1 { left: 15%; transform: scale(0.7); animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
+        .a1 { left: 15%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
         .a2 { left: 50%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
-        .a3 { left: 75%; transform: scale(0.6); animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }
+        .a3 { left: 75%; animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }
         .s1 { left: 25%; animation: sparkleUp 3s linear infinite; }
         .s2 { left: 55%; animation: sparkleUp 4s linear infinite; }
         .s3 { left: 80%; animation: sparkleUp 5s linear infinite; }
 
-        @keyframes slideUp {
-            0% { top: 0; } 100% { top: -700px; }
-        }
-        @keyframes sideSway {
-            0% { margin-left: 0; } 50% { margin-left: 60px; } 100% { margin-left: 0; }
-        }
-        @keyframes sparkleUp {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
-        }
-        @keyframes sparkleTwinkle {
-            0%, 100% { transform: scale(1); } 50% { transform: scale(1.6); }
-        }
+        @keyframes slideUp { 0% { top: 0; } 100% { top: -700px; } }
+        @keyframes sideSway { 0% { margin-left: 0; } 50% { margin-left: 60px; } 100% { margin-left: 0; } }
+        @keyframes sparkleUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-600px) rotate(360deg); opacity: 0; } }
+        @keyframes sparkleTwinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.6); } }
 
         body {
-            background-color: var(--color-bg);
+            background: linear-gradient(135deg, var(--color-bg), #f8c8e5);
             margin: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: Arial, sans-serif;
         }
 
         .reset {
@@ -280,8 +289,8 @@
         .reset button {
             font-weight: 600;
             transition: all 0.3s ease;
-            background-color: var(--color-env);
-            border: 2px solid var(--color-env2);
+            background: linear-gradient(145deg, var(--color-env), var(--color-env2));
+            border: 2px solid rgba(255,255,255,0.5);
             border-radius: 25px;
             color: white;
             padding: 14px 30px;
@@ -289,50 +298,41 @@
             font-size: 17px;
             cursor: pointer;
             box-shadow: 0 6px 25px rgba(0,0,0,0.2);
-            font-family: Arial, sans-serif;
         }
 
         .reset button:hover {
-            background-color: var(--color-env2);
-            transform: translateY(-4px) scale(1.06);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-        }
-
-        .wax-seal {
-            background: var(--wax-red);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            position: absolute;
-            top: 182px;
-            left: 222px;
-            z-index: 8;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
     <div class="envlope-wrapper">
         <div id="envelope" class="close">
+            <!-- Wax Seal -->
             <div class="wax-seal"></div>
+            
+            <!-- Pocket/Body -->
             <div class="pocket"></div>
             
-            <!-- FOUR FLAPS -->
-            <div class="flap flap-top front"></div>
-            <div class="flap flap-bottom front"></div>
-            <div class="flap flap-left front"></div>
-            <div class="flap flap-right front"></div>
+            <!-- FOUR PERFECT FLAPS -->
+            <div class="flap flap-top"></div>
+            <div class="flap flap-bottom"></div>
+            <div class="flap flap-left"></div>
+            <div class="flap flap-right"></div>
             
+            <!-- LETTER - Pops up when opened -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
                 <div class="message">
                     <p>Happy Valentine's Day, Isay! 💕</p>
-                    <p>My dearest Isay, every moment with you feels like a beautiful dream. Your smile lights up my world brighter than a thousand stars.</p>
-                    <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my everything. Forever yours with all my love.</p>
+                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars in the night sky.</p>
+                    <p>I cherish every single laugh we share, every glance that speaks volumes, every moment that makes my heart beat faster. You are my everything—my heart, my joy, my forever love.</p>
                 </div>
             </div>
             
+            <!-- Hearts & Sparkles -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
@@ -345,22 +345,26 @@
             </div>
         </div>
     </div>
+    
     <div class="reset">
-        <button id="open">Open Envelope</button>
-        <button id="reset">Close Envelope</button>
+        <button id="open">✨ Open Love Letter ✨</button>
+        <button id="reset">🔒 Close Envelope</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const envelope = document.getElementById('envelope');
+            
             document.getElementById('open').onclick = () => {
                 envelope.classList.remove('close');
                 envelope.classList.add('open');
             };
+            
             document.getElementById('reset').onclick = () => {
                 envelope.classList.remove('open');
                 envelope.classList.add('close');
             };
+            
             envelope.onclick = () => {
                 envelope.classList.toggle('close');
                 envelope.classList.toggle('open');
