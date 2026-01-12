@@ -34,7 +34,7 @@
             z-index: 3;
         }
 
-        /* NEW FULL COVERAGE FLAP - Covers entire envelope body */
+        /* PERFECT MATCH FLAP - Covers EVERY corner exactly */
         .flap {
             border-left: 250px solid transparent;
             border-right: 250px solid transparent;
@@ -42,11 +42,12 @@
             border-top: 210px solid var(--color-flap);
             transform-origin: top;
             pointer-events: none;
+            /* Exact corner matching */
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
         }
 
-        /* FULL COVERAGE POCKET - Matches flap exactly */
+        /* PERFECT MATCH POCKET - Identical dimensions */
         .pocket {
             border-left: 250px solid var(--color-env);
             border-right: 250px solid var(--color-env);
