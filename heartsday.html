@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - Larger 90-Word Capacity</title>
+    <title>Valentine's Day Greeting - Perfect 90-Word Fit</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,236 +16,248 @@
 
         #envelope {
             position: relative;
-            width: 580px;  /* Increased from 500px */
-            height: 480px; /* Increased from 420px */
+            width: 600px;  /* Perfect size for 90 words */
+            height: 500px;
             border-radius: 15px;
             margin: 0 auto;
-            top: 120px;
+            top: 100px;
             background: linear-gradient(145deg, var(--color-env), var(--color-env2));
-            box-shadow: 0 8px 32px rgba(0,0,0,.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,.25);
             cursor: pointer;
             overflow: hidden;
         }
 
-        /* SUBTLE ENVELOPE TEXTURE */
+        /* ENVELOPE COVER DESIGN */
         #envelope::before {
-            content: 'To: Isay 💕';
+            content: 'To: My Dearest Isay 💕';
             position: absolute;
-            top: 90px;
+            top: 85px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Handlee', cursive;
-            font-size: 32px;
-            color: rgba(255,255,255,0.8);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 34px;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
             z-index: 3;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        /* LARGER FLAPS FOR BIGGER ENVELOPE */
+        /* PERFECTLY PROPORTIONED FLAPS */
         .flap {
             position: absolute;
             z-index: 6;
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .flap-top {
             top: 0;
             left: 50%;
-            margin-left: -200px;  /* Scaled up */
+            margin-left: -210px;
             width: 0;
             height: 0;
-            border-left: 200px solid transparent;
-            border-right: 200px solid transparent;
-            border-bottom: 240px solid var(--color-flap);  /* Scaled up */
+            border-left: 210px solid transparent;
+            border-right: 210px solid transparent;
+            border-bottom: 250px solid var(--color-flap);
             transform-origin: top;
-            box-shadow: inset 0 -2px 8px rgba(0,0,0,0.1);
         }
 
         .flap-top::after {
-            content: '';
+            content: '✨';
             position: absolute;
-            bottom: 18px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90px;
-            height: 7px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 3px;
+            font-size: 24px;
+            opacity: 0.8;
         }
 
         .flap-bottom {
             bottom: 0;
             left: 50%;
-            margin-left: -200px;
+            margin-left: -210px;
             width: 0;
             height: 0;
-            border-left: 200px solid transparent;
-            border-right: 200px solid transparent;
-            border-top: 240px solid var(--color-flap);
+            border-left: 210px solid transparent;
+            border-right: 210px solid transparent;
+            border-top: 250px solid var(--color-flap);
             transform-origin: bottom;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .flap-bottom::before {
-            content: '';
+            content: '💖';
             position: absolute;
-            top: 18px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 6px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 3px;
+            font-size: 22px;
+            opacity: 0.8;
         }
 
         .flap-left {
             top: 50%;
-            margin-top: -120px;  /* Scaled up */
+            margin-top: -125px;
             left: 0;
             width: 0;
             height: 0;
-            border-top: 120px solid transparent;
-            border-bottom: 120px solid transparent;
-            border-right: 290px solid var(--color-flap);  /* Scaled up */
+            border-top: 125px solid transparent;
+            border-bottom: 125px solid transparent;
+            border-right: 300px solid var(--color-flap);
             transform-origin: left center;
-            box-shadow: inset -2px 0 8px rgba(0,0,0,0.1);
         }
 
         .flap-left::after {
-            content: '';
+            content: '🌹';
             position: absolute;
             right: 25px;
             top: 50%;
             transform: translateY(-50%);
-            width: 7px;
-            height: 80px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 3px;
+            font-size: 20px;
+            opacity: 0.8;
         }
 
         .flap-right {
             top: 50%;
-            margin-top: -120px;
+            margin-top: -125px;
             right: 0;
             width: 0;
             height: 0;
-            border-top: 120px solid transparent;
-            border-bottom: 120px solid transparent;
-            border-left: 290px solid var(--color-flap);
+            border-top: 125px solid transparent;
+            border-bottom: 125px solid transparent;
+            border-left: 300px solid var(--color-flap);
             transform-origin: right center;
-            box-shadow: inset 2px 0 8px rgba(0,0,0,0.1);
         }
 
         .flap-right::before {
-            content: '';
+            content: '💝';
             position: absolute;
             left: 25px;
             top: 50%;
             transform: translateY(-50%);
-            width: 7px;
-            height: 80px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 3px;
+            font-size: 20px;
+            opacity: 0.8;
         }
 
-        /* WAX SEAL - Scaled up */
+        /* WAX SEAL */
         .wax-seal {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 75px;
-            height: 75px;
+            width: 80px;
+            height: 80px;
             background: radial-gradient(circle at 30% 30%, #ff4d4d, var(--wax-red));
             border-radius: 50%;
             z-index: 8;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
             transition: all 0.8s ease 0.5s;
         }
 
-        /* BIGGER LETTER - 90+ WORD CAPACITY */
+        .wax-seal::after {
+            content: '💕';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+        }
+
+        /* PERFECT LETTER - Fits exactly within envelope */
         .letter {
             position: absolute;
-            background: linear-gradient(145deg, #f8f1f5, #e8d9e0);
-            width: 90%;  /* Full width capacity */
-            height: 90%;  /* Full height capacity */
-            left: 5%;
-            top: 5%;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-            padding: 45px;  /* More padding space */
+            background: linear-gradient(145deg, #fdf8fa, #f0e8ee);
+            width: 92%;
+            height: 92%;
+            left: 4%;
+            top: 4%;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+            padding: 50px;
             box-sizing: border-box;
             z-index: 3;
-            transform: scale(0) rotateY(90deg);
+            transform: scale(0.95) rotateY(90deg);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.9s;
         }
 
         .open .letter {
-            z-index: 10;
+            z-index: 12;
+            transform: scale(1) rotateY(0deg);
+            opacity: 1;
         }
 
         .letter-content {
             font-family: 'Handlee', cursive;
             color: #d46a84;
             text-align: center;
-            line-height: 1.7;
+            line-height: 1.75;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            font-size: 1.55em;
         }
 
         .letter-content p {
-            margin: 18px 0;
-            font-size: 1.5em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            word-wrap: break-word;
+            margin: 20px 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         .letter-corner {
             position: absolute;
-            width: 32px;
-            height: 32px;
-            border: 3px solid #ffd1dc;
+            width: 35px;
+            height: 35px;
+            border: 4px solid #ffd1dc;
             border-radius: 8px;
             z-index: 5;
         }
-        .corner-tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
+        .corner-tl { top: 25px; left: 25px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 25px; right: 25px; border-left: none; border-top: none; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); }
         }
 
         .envlope-wrapper {
-            height: 600px;  /* Taller wrapper */
-            margin-top: 60px;
+            height: 650px;
+            margin-top: 50px;
             animation: float 3s ease-in-out infinite;
         }
 
         /* STATES */
-        .close .flap-top, .close .flap-bottom, .close .flap-left, .close .flap-right { transform: rotateX(0deg) rotateY(0deg); }
-        .close .letter { transform: scale(0) rotateY(90deg); opacity: 0; z-index: 3; }
+        .close .letter { transform: scale(0.95) rotateY(90deg); opacity: 0; z-index: 3; }
         .close .wax-seal { transform: translate(-50%, -50%) scale(1); }
 
-        .open .flap-top { transform: rotateX(-135deg) translateY(-70px); transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s; }
-        .open .flap-bottom { transform: rotateX(135deg) translateY(70px); transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s; }
-        .open .flap-left { transform: rotateY(90deg) translateX(-70px); transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s; }
-        .open .flap-right { transform: rotateY(-90deg) translateX(70px); transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s; }
-        .open .wax-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.6s ease 0.5s; }
-        .open .letter { transform: scale(1) rotateY(0deg); opacity: 1; z-index: 10; transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s; }
+        .open .flap-top { 
+            transform: rotateX(-145deg) translateY(-80px); 
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s; 
+        }
+        .open .flap-bottom { 
+            transform: rotateX(145deg) translateY(80px); 
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s; 
+        }
+        .open .flap-left { 
+            transform: rotateY(95deg) translateX(-80px); 
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s; 
+        }
+        .open .flap-right { 
+            transform: rotateY(-95deg) translateX(80px); 
+            transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s; 
+        }
+        .open .wax-seal { 
+            transform: translate(-50%, -50%) scale(0); 
+            opacity: 0; 
+            transition: all 0.7s ease 0.5s; 
+        }
 
-        /* EFFECTS - Scaled up */
+        /* EFFECTS */
         .hearts, .sparkles {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 100%;
-            z-index: 5;
+            z-index: 7;
             pointer-events: none;
         }
         .heart, .sparkle { position: absolute; bottom: 0; }
@@ -279,10 +291,10 @@
         .s2 { left: 55%; animation: sparkleUp 4s linear infinite; }
         .s3 { left: 80%; animation: sparkleUp 5s linear infinite; }
 
-        @keyframes slideUp { 0% { top: 0; } 100% { top: -800px; } }
-        @keyframes sideSway { 0% { margin-left: 0; } 50% { margin-left: 70px; } 100% { margin-left: 0; } }
-        @keyframes sparkleUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-700px) rotate(360deg); opacity: 0; } }
-        @keyframes sparkleTwinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.6); } }
+        @keyframes slideUp { 0% { top: 0; } 100% { top: -850px; } }
+        @keyframes sideSway { 0% { margin-left: 0; } 50% { margin-left: 80px; } 100% { margin-left: 0; } }
+        @keyframes sparkleUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-750px) rotate(360deg); opacity: 0; } }
+        @keyframes sparkleTwinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.8); } }
 
         body {
             background: linear-gradient(135deg, var(--color-bg), #f8c8e5);
@@ -295,24 +307,24 @@
 
         .reset {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         .reset button {
             font-weight: 600;
             transition: all 0.3s ease;
             background: linear-gradient(145deg, var(--color-env), var(--color-env2));
-            border: 2px solid rgba(255,255,255,0.5);
-            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 30px;
             color: white;
-            padding: 14px 30px;
+            padding: 16px 35px;
             margin: 10px;
-            font-size: 17px;
+            font-size: 18px;
             cursor: pointer;
             box-shadow: 0 6px 25px rgba(0,0,0,0.2);
         }
         .reset button:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -322,21 +334,21 @@
             <!-- WAX SEAL -->
             <div class="wax-seal"></div>
             
-            <!-- LARGER FLAPS -->
+            <!-- FLAPS WITH DESIGNS -->
             <div class="flap flap-top"></div>
             <div class="flap flap-bottom"></div>
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- BIGGER LETTER - 90+ WORDS -->
+            <!-- PERFECTLY FITTED LETTER -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
                 <div class="letter-content">
                     <p>Happy Valentine's Day, Isay! 💕</p>
-                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars.</p>
-                    <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my forever love. Always yours forever and always.</p>
-                    <p>With all my love, today and every day. 💖</p>
+                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars in the night sky.</p>
+                    <p>I cherish every single laugh we share together, every glance that speaks volumes without words, every moment that makes my heart beat just a little faster when you're near.</p>
+                    <p>You are my heart, my joy, my forever love. With all my love, today and every single day that follows. Always yours forever. 💖</p>
                 </div>
             </div>
             
