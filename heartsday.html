@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Valentine's Day Greeting - 4 Triangular Flaps</title>
+    <title>Valentine's Day Greeting - Perfect 4 Flaps</title>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -27,14 +27,13 @@
             overflow: hidden;
         }
 
-        /* FOUR TRIANGULAR FLAPS - Perfect coverage */
+        /* FOUR TRIANGULAR FLAPS */
         .flap {
             position: absolute;
             z-index: 6;
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* TOP TRIANGLE */
         .flap-top {
             top: 0;
             left: 50%;
@@ -47,7 +46,6 @@
             transform-origin: top;
         }
 
-        /* BOTTOM TRIANGLE */
         .flap-bottom {
             bottom: 0;
             left: 50%;
@@ -60,7 +58,6 @@
             transform-origin: bottom;
         }
 
-        /* LEFT TRIANGLE */
         .flap-left {
             top: 50%;
             margin-top: -105px;
@@ -73,7 +70,6 @@
             transform-origin: left center;
         }
 
-        /* RIGHT TRIANGLE */
         .flap-right {
             top: 50%;
             margin-top: -105px;
@@ -86,7 +82,7 @@
             transform-origin: right center;
         }
 
-        /* WAX SEAL - Connected ONLY to flaps */
+        /* WAX SEAL - Connected to flaps only */
         .wax-seal {
             position: absolute;
             top: 50%;
@@ -101,22 +97,25 @@
             transition: all 0.8s ease 0.5s;
         }
 
-        /* LETTER - ONLY visible when flaps open */
+        /* LETTER - NOW FITS PERFECTLY INSIDE WHITE SURFACE */
         .letter {
             position: absolute;
             background: linear-gradient(145deg, #f8f1f5, #e8d9e0);
-            width: 90%;
-            height: 90%;
-            left: 5%;
-            top: 5%;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            padding: 40px;
+            width: 88%;        /* Reduced width to fit perfectly */
+            height: 88%;       /* Reduced height to fit perfectly */
+            left: 6%;          /* Slightly more margin */
+            top: 6%;           /* Slightly more margin */
+            border-radius: 8px; /* Slightly smaller radius */
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            padding: 35px;
             box-sizing: border-box;
             z-index: 4;
             transform: scale(0) rotateY(90deg);
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
+            /* Ensure it stays within envelope bounds */
+            max-width: calc(100% - 12px);
+            max-height: calc(100% - 12px);
         }
 
         .letter-content {
@@ -132,7 +131,7 @@
 
         .letter-content p {
             margin: 15px 0;
-            font-size: 1.5em;
+            font-size: 1.45em;
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
             word-wrap: break-word;
         }
@@ -140,14 +139,14 @@
         /* LETTER CORNERS */
         .letter-corner {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border: 3px solid #ffd1dc;
-            border-radius: 8px;
+            border-radius: 6px;
             z-index: 5;
         }
-        .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+        .corner-tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -160,7 +159,7 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* CLOSED STATE - Everything hidden except flaps + wax seal */
+        /* CLOSED STATE */
         .close .flap-top { transform: rotateX(0deg); }
         .close .flap-bottom { transform: rotateX(0deg); }
         .close .flap-left { transform: rotateY(0deg); }
@@ -168,7 +167,7 @@
         .close .letter { transform: scale(0) rotateY(90deg); opacity: 0; }
         .close .wax-seal { transform: translate(-50%, -50%) scale(1); }
 
-        /* OPEN STATE - Flaps fly away, wax seal disappears, ONLY letter shows */
+        /* OPEN STATE */
         .open .flap-top {
             transform: rotateX(-135deg) translateY(-50px);
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
@@ -201,7 +200,7 @@
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
         }
 
-        /* Hearts and Sparkles - Only when letter revealed */
+        /* Hearts and Sparkles */
         .hearts, .sparkles {
             position: absolute;
             top: 0;
@@ -296,7 +295,7 @@
 <body>
     <div class="envlope-wrapper">
         <div id="envelope" class="close">
-            <!-- WAX SEAL - Connected to flaps only -->
+            <!-- WAX SEAL -->
             <div class="wax-seal"></div>
             
             <!-- 4 TRIANGULAR FLAPS -->
@@ -305,7 +304,7 @@
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- LETTER - Shows ONLY when flaps open -->
+            <!-- LETTER - NOW PERFECTLY FITS WHITE SURFACE -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
@@ -316,7 +315,7 @@
                 </div>
             </div>
             
-            <!-- Effects -->
+            <!-- EFFECTS -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
