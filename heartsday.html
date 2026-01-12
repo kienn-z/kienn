@@ -27,28 +27,14 @@
             overflow: hidden;
         }
 
-        /* POCKET - Base envelope body */
-        .pocket {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, var(--color-env), var(--color-env2));
-            border-radius: 12px;
-            z-index: 3;
-        }
-
-        /* FOUR TRIANGULAR FLAPS */
+        /* FOUR TRIANGULAR FLAPS - Perfect coverage */
         .flap {
             position: absolute;
             z-index: 6;
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 2px solid rgba(255,255,255,0.3);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        /* TOP TRIANGULAR FLAP */
+        /* TOP TRIANGLE */
         .flap-top {
             top: 0;
             left: 50%;
@@ -58,12 +44,10 @@
             border-left: 175px solid transparent;
             border-right: 175px solid transparent;
             border-bottom: 210px solid var(--color-flap);
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
             transform-origin: top;
         }
 
-        /* BOTTOM TRIANGULAR FLAP */
+        /* BOTTOM TRIANGLE */
         .flap-bottom {
             bottom: 0;
             left: 50%;
@@ -73,12 +57,10 @@
             border-left: 175px solid transparent;
             border-right: 175px solid transparent;
             border-top: 210px solid var(--color-flap);
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
             transform-origin: bottom;
         }
 
-        /* LEFT TRIANGULAR FLAP */
+        /* LEFT TRIANGLE */
         .flap-left {
             top: 50%;
             margin-top: -105px;
@@ -88,12 +70,10 @@
             border-top: 105px solid transparent;
             border-bottom: 105px solid transparent;
             border-right: 250px solid var(--color-flap);
-            border-top-right-radius: 12px;
-            border-bottom-right-radius: 12px;
             transform-origin: left center;
         }
 
-        /* RIGHT TRIANGULAR FLAP */
+        /* RIGHT TRIANGLE */
         .flap-right {
             top: 50%;
             margin-top: -105px;
@@ -103,12 +83,25 @@
             border-top: 105px solid transparent;
             border-bottom: 105px solid transparent;
             border-left: 250px solid var(--color-flap);
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
             transform-origin: right center;
         }
 
-        /* LETTER - Hidden then pops up */
+        /* WAX SEAL - Connected ONLY to flaps */
+        .wax-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, var(--wax-red));
+            border-radius: 50%;
+            z-index: 8;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+            transition: all 0.8s ease 0.5s;
+        }
+
+        /* LETTER - ONLY visible when flaps open */
         .letter {
             position: absolute;
             background: linear-gradient(145deg, #f8f1f5, #e8d9e0);
@@ -121,23 +114,12 @@
             padding: 40px;
             box-sizing: border-box;
             z-index: 4;
-            transform: scale(0.8) rotateY(30deg);
+            transform: scale(0) rotateY(90deg);
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
         }
 
-        .letter:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,231,236,0.8) 0%, transparent 50%);
-            border-radius: 12px;
-        }
-
-        .message {
+        .letter-content {
             font-family: 'Handlee', cursive;
             color: #d46a84;
             text-align: center;
@@ -146,11 +128,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
-            z-index: 2;
         }
 
-        .message p {
+        .letter-content p {
             margin: 15px 0;
             font-size: 1.5em;
             text-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -169,20 +149,6 @@
         .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
         .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
-        /* CENTER WAX SEAL */
-        .wax-seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 30% 30%, #ff4d4d, var(--wax-red));
-            border-radius: 50%;
-            z-index: 7;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.3);
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
@@ -194,32 +160,39 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* CLOSED STATE */
+        /* CLOSED STATE - Everything hidden except flaps + wax seal */
         .close .flap-top { transform: rotateX(0deg); }
         .close .flap-bottom { transform: rotateX(0deg); }
         .close .flap-left { transform: rotateY(0deg); }
         .close .flap-right { transform: rotateY(0deg); }
-        .close .letter { transform: scale(0.8) rotateY(30deg); opacity: 0; }
+        .close .letter { transform: scale(0) rotateY(90deg); opacity: 0; }
+        .close .wax-seal { transform: translate(-50%, -50%) scale(1); }
 
-        /* OPEN STATE - 4 triangular flaps fly open */
+        /* OPEN STATE - Flaps fly away, wax seal disappears, ONLY letter shows */
         .open .flap-top {
-            transform: rotateX(-120deg);
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
+            transform: rotateX(-135deg) translateY(-50px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
         }
 
         .open .flap-bottom {
-            transform: rotateX(120deg);
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
+            transform: rotateX(135deg) translateY(50px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
         }
 
         .open .flap-left {
-            transform: rotateY(90deg);
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
+            transform: rotateY(90deg) translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
         }
 
         .open .flap-right {
-            transform: rotateY(-90deg);
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+            transform: rotateY(-90deg) translateX(50px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+        }
+
+        .open .wax-seal {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.6s ease 0.5s;
         }
 
         .open .letter {
@@ -228,7 +201,7 @@
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s;
         }
 
-        /* Hearts and Sparkles */
+        /* Hearts and Sparkles - Only when letter revealed */
         .hearts, .sparkles {
             position: absolute;
             top: 0;
@@ -271,7 +244,8 @@
             animation: sparkleTwinkle 1s infinite;
         }
 
-        .close .heart, .close .sparkle { opacity: 0; animation: none; }
+        .close .hearts, .close .sparkles { opacity: 0; }
+        .open .hearts, .open .sparkles { opacity: 1; }
 
         .a1 { left: 15%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
         .a2 { left: 50%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
@@ -292,7 +266,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: Arial, sans-serif;
         }
 
         .reset {
@@ -323,30 +296,27 @@
 <body>
     <div class="envlope-wrapper">
         <div id="envelope" class="close">
-            <!-- CENTER WAX SEAL -->
+            <!-- WAX SEAL - Connected to flaps only -->
             <div class="wax-seal"></div>
             
-            <!-- POCKET/BODY -->
-            <div class="pocket"></div>
-            
-            <!-- FOUR TRIANGULAR FLAPS -->
+            <!-- 4 TRIANGULAR FLAPS -->
             <div class="flap flap-top"></div>
             <div class="flap flap-bottom"></div>
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- LETTER -->
+            <!-- LETTER - Shows ONLY when flaps open -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
-                <div class="message">
+                <div class="letter-content">
                     <p>Happy Valentine's Day, Isay! 💕</p>
-                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars in the night sky.</p>
-                    <p>I cherish every single laugh we share, every glance that speaks volumes, every moment that makes my heart beat faster. You are my everything—my heart, my joy, my forever love.</p>
+                    <p>My dearest Isay, every moment spent with you feels like living in a beautiful dream. Your smile illuminates my world brighter than a thousand stars.</p>
+                    <p>I cherish every laugh, every glance, every moment we share. You are my heart, my joy, my forever love. Always yours.</p>
                 </div>
             </div>
             
-            <!-- HEARTS & SPARKLES -->
+            <!-- Effects -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
