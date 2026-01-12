@@ -34,22 +34,26 @@
             z-index: 3;
         }
 
+        /* NEW FULL COVERAGE FLAP - Covers entire envelope body */
         .flap {
             border-left: 250px solid transparent;
             border-right: 250px solid transparent;
-            border-bottom: 120px solid transparent;
-            border-top: 150px solid var(--color-flap);
+            border-bottom: 0px solid transparent;
+            border-top: 210px solid var(--color-flap);
             transform-origin: top;
             pointer-events: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
 
+        /* FULL COVERAGE POCKET - Matches flap exactly */
         .pocket {
             border-left: 250px solid var(--color-env);
             border-right: 250px solid var(--color-env);
-            border-bottom: 150px solid var(--color-env2);
-            border-top: 150px solid transparent;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-bottom: 210px solid var(--color-env2);
+            border-top: 0px solid transparent;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
 
         .letter {
@@ -94,7 +98,7 @@
 
         .message p {
             margin: 12px 0;
-            font-size: 1.5em;
+            font-size: 1.4em;
             text-shadow: 0 2px 4px rgba(0,0,0,0.15);
             word-wrap: break-word;
         }
@@ -263,7 +267,7 @@
             height: 55px;
             border-radius: 50%;
             position: absolute;
-            top: 30px;
+            top: 25px;
             right: 30px;
             z-index: 4;
             box-shadow: 0 3px 15px rgba(0,0,0,0.4);
@@ -280,9 +284,9 @@
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
                 <div class="message">
-                    <p>Happy Valentine's Day, Isay!</p>
-                    <p>This special envelope now holds even more love notes for you. I hope it brings a smile to your beautiful face.</p>
-                    <p>You mean the world to me. 💕</p>
+                    <p>Happy Valentine's Day, Isay! 💕</p>
+                    <p>My dearest Isay, every moment with you feels like a beautiful dream. Your smile lights up my world brighter than a thousand stars.</p>
+                    <p>I cherish every laugh, every glance, every moment we share together. You are my heart, my joy, my everything. Forever yours.</p>
                 </div>
             </div>
             <div class="hearts">
