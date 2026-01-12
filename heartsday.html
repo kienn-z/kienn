@@ -199,25 +199,26 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER - SMALLER FONT TO FIT WHITE SURFACE */
+        /* FIXED LETTER - VISIBLE AND PERFECTLY FITTED */
         .letter {
             position: absolute;
             background: transparent;
-            width: 94%;  /* Slightly tighter fit */
-            height: 94%;
-            left: 3%;
-            top: 3%;
-            padding: 40px;  /* Reduced padding */
+            width: 92%;
+            height: 92%;
+            left: 4%;
+            top: 4%;
+            padding: 35px;
             box-sizing: border-box;
-            z-index: 4;
-            transform: scale(0) rotateY(90deg);
+            z-index: 5;  /* FIXED: Higher base z-index */
+            transform: scale(0.1) rotateY(90deg);  /* FIXED: Smaller initial scale */
             opacity: 0;
             visibility: hidden;
             transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.9s;
         }
 
+        /* FIXED: Ensure letter appears properly when open */
         .open .letter {
-            z-index: 10;
+            z-index: 12;  /* Above everything */
             transform: scale(1) rotateY(0deg);
             opacity: 1;
             visibility: visible;
@@ -227,32 +228,33 @@
             font-family: 'Handlee', cursive;
             color: #d63384;
             text-align: center;
-            line-height: 1.65;  /* Tighter line height */
+            line-height: 1.6;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            font-size: 1.25em;  /* REDUCED FROM 1.55em */
+            font-size: 1.3em;  /* FIXED: Slightly larger but still fits */
+            overflow: hidden;  /* Prevent overflow */
         }
 
         .letter-content p {
-            margin: 15px 0;  /* Reduced margins */
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin: 12px 0;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
             word-wrap: break-word;
         }
 
-        /* LETTER CORNERS - Adjusted position */
+        /* LETTER CORNERS */
         .letter-corner {
             position: absolute;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border: 3px solid rgba(255,192,203,0.9);
             border-radius: 6px;
             z-index: 6;
             background: inherit;
         }
-        .corner-tl { top: 25px; left: 25px; border-right: none; border-bottom: none; }
-        .corner-br { bottom: 25px; right: 25px; border-left: none; border-top: none; }
+        .corner-tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
+        .corner-br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -265,8 +267,13 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* STATES */
-        .close .letter { transform: scale(0) rotateY(90deg); opacity: 0; visibility: hidden; z-index: 1; }
+        /* STATES - FIXED */
+        .close .letter { 
+            transform: scale(0.1) rotateY(90deg); 
+            opacity: 0; 
+            visibility: hidden; 
+            z-index: 1; 
+        }
         .close .wax-seal { transform: translate(-50%, -50%) scale(1); }
 
         .open .flap-top { transform: rotateX(-145deg) translateY(-75px); transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s; }
@@ -276,7 +283,7 @@
         .open .wax-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.7s ease 0.5s; }
 
         /* EFFECTS */
-        .hearts, .sparkles { position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 8; pointer-events: none; }
+        .hearts, .sparkles { position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 11; pointer-events: none; }
         .close .hearts, .close .sparkles { opacity: 0; }
         .open .hearts, .open .sparkles { opacity: 1; }
 
@@ -348,7 +355,7 @@
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- 90-WORD LETTER - NOW PERFECTLY FITS */
+            <!-- FIXED LETTER - NOW VISIBLE -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
