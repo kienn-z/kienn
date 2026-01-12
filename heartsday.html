@@ -17,7 +17,7 @@
 
         #envelope {
             position: relative;
-            width: 620px;        /* Bigger for 90 words */
+            width: 620px;
             height: 520px;
             border-radius: 16px;
             margin: 0 auto;
@@ -30,22 +30,7 @@
             border: 4px solid rgba(255,255,255,0.3);
         }
 
-        /* ENVELOPE COVER DESIGN */
-        #envelope::before {
-            content: 'To: My Dearest Isay 💕';
-            position: absolute;
-            top: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Handlee', cursive;
-            font-size: 36px;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 3px 8px rgba(0,0,0,0.4);
-            z-index: 3;
-            letter-spacing: 2px;
-        }
-
-        /* SUBTLE ENVELOPE TEXTURE */
+        /* SUBTLE ENVELOPE TEXTURE - NO WORDS */
         #envelope::after {
             content: '';
             position: absolute;
@@ -214,7 +199,7 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER - 90 WORDS EXACTLY */
+        /* PERFECT LETTER - 90 WORDS EXACTLY WITHIN WHITE SURFACE */
         .letter {
             position: absolute;
             background: transparent;
@@ -353,7 +338,7 @@
             <!-- WAX SEAL -->
             <div class="wax-seal"></div>
             
-            <!-- WHITE POCKET SURFACE -->
+            <!-- WHITE POCKET SURFACE - BLANK WHEN CLOSED -->
             <div class="pocket"></div>
             
             <!-- DECORATED FLAPS -->
@@ -362,7 +347,7 @@
             <div class="flap flap-left"></div>
             <div class="flap flap-right"></div>
             
-            <!-- 90-WORD LETTER -->
+            <!-- 90-WORD LETTER - ONLY ON WHITE SURFACE WHEN OPENED -->
             <div class="letter">
                 <div class="letter-corner corner-tl"></div>
                 <div class="letter-corner corner-br"></div>
