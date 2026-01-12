@@ -8,7 +8,7 @@
             --color-env: #FFB6C1;
             --color-env2: #ff91a4;
             --color-flap: #ff80ab;
-            --color-bg: #feeef5;        /* FIXED: Romantic blush pink */
+            --color-bg: #feeef5;
             --color-heart: #ff1493;
             --color-sparkle: #fff;
             --wax-red: #c71585;
@@ -154,7 +154,7 @@
             opacity: 0.9;
         }
 
-        /* GOLD ACCENTS ON FLAPS */
+        /* GOLD ACCENTS ON FLAPS - MOVED HIGHER */
         .flap-top::before,
         .flap-bottom::after,
         .flap-left::before,
@@ -166,8 +166,8 @@
             opacity: 0.8;
         }
 
-        .flap-top::before { bottom: 10px; left: 50%; width: 100px; height: 4px; transform: translateX(-50%); }
-        .flap-bottom::after { top: 10px; left: 50%; width: 90px; height: 4px; transform: translateX(-50%); }
+        .flap-top::before { bottom: 15px; left: 50%; width: 100px; height: 4px; transform: translateX(-50%); }  /* FIXED: Higher */
+        .flap-bottom::after { top: 15px; left: 50%; width: 90px; height: 4px; transform: translateX(-50%); }   /* FIXED: Higher */
         .flap-left::before { right: 15px; top: 50%; width: 4px; height: 90px; transform: translateY(-50%); }
         .flap-right::after { left: 15px; top: 50%; width: 4px; height: 90px; transform: translateY(-50%); }
 
@@ -199,7 +199,7 @@
             font-size: 32px;
         }
 
-        /* PERFECT LETTER */
+        /* PERFECT LETTER - INTRO MOVED DOWN */
         .letter {
             position: absolute;
             background: transparent;
@@ -207,7 +207,7 @@
             height: 90%;
             left: 5%;
             top: 5%;
-            padding: 30px;
+            padding: 35px 30px 30px 30px;  /* FIXED: Extra top padding */
             box-sizing: border-box;
             z-index: 12;
             transform: scale(0.05) rotateY(90deg);
@@ -232,6 +232,7 @@
             flex-direction: column;
             justify-content: center;
             font-size: 1.18em;
+            padding-top: 15px;  /* FIXED: Extra top spacing */
         }
 
         .letter-content p {
@@ -240,11 +241,11 @@
             padding: 0 5px;
         }
 
-        /* FIRST LINE SPECIAL - BIGGER & BOLD */
+        /* FIRST LINE SPECIAL - NOW BELOW YELLOW LINE */
         .letter-content p:first-child {
             font-size: 1.45em;
             font-weight: 600;
-            margin-top: 0;
+            margin-top: 5px;      /* FIXED: Small top margin */
             margin-bottom: 15px;
         }
 
@@ -287,7 +288,7 @@
         .open .flap-right { transform: rotateY(-95deg) translateX(75px); transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s; }
         .open .wax-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.7s ease 0.5s; }
 
-        /* EFFECTS - BEHIND LETTER */
+        /* EFFECTS - FIXED: NO BOTTOM CENTER HEART */
         .hearts, .sparkles { 
             position: absolute; 
             top: 0; 
@@ -316,9 +317,10 @@
         .heart:after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
         .sparkle { width: 14px; height: 14px; background: var(--color-sparkle); border-radius: 50%; animation: sparkleTwinkle 1s infinite; }
 
-        .a1 { left: 15%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
-        .a2 { left: 50%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }
-        .a3 { left: 75%; animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }
+        /* FIXED: Hearts positioned away from center bottom */
+        .a1 { left: 10%; animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate; }
+        .a2 { left: 35%; animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate; }  /* FIXED: Left of center */
+        .a3 { left: 65%; animation: slideUp 6s linear infinite, sideSway 3s ease-in-out infinite alternate; }  /* FIXED: Right of center */
         .s1 { left: 25%; animation: sparkleUp 3s linear infinite; }
         .s2 { left: 55%; animation: sparkleUp 4s linear infinite; }
         .s3 { left: 80%; animation: sparkleUp 5s linear infinite; }
@@ -329,11 +331,11 @@
         @keyframes sparkleTwinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.8); } }
 
         body {
-            background: linear-gradient(135deg, #feeef5, #f8e1ed, #fce4ec);  /* NEW: Romantic blush gradient */
+            background: linear-gradient(135deg, #feeef5, #f8e1ed, #fce4ec);
             margin: 0;
             min-height: 100vh;
             display: flex;
-            flex-direction:  column;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -388,7 +390,7 @@
                 </div>
             </div>
             
-            <!-- EFFECTS - BEHIND LETTER -->
+            <!-- EFFECTS -->
             <div class="hearts">
                 <div class="heart a1"></div>
                 <div class="heart a2"></div>
